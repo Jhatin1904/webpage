@@ -1,0 +1,82 @@
+           <!DOCTYPE html>
+<html>
+<head>
+	<title>BASIC DETAILS</title>
+	<script>
+		function validateform() {
+			var letters = /^[A-Za-z]+$/;
+			var fullName = document.forms["myform"]["full-name"].value;
+			var branch = document.forms["myform"]["branch"].value;
+			var gender = document.forms["myform"]["gender"].value;
+			var phone = document.forms["myform"]["phone"].value;
+			var address = document.forms["myform"]["address"].value;
+			var email = document.forms["myform"]["email"].value;
+
+			if (fullName == "" || !fullName.match(letters)) {
+				alert("please verify the name field");
+				return false;
+			}
+			if (branch == "Course") {
+				alert("Please select a branch");
+				return false;
+			}
+
+			if (gender == "") {
+				alert("Please select a gender");
+				return false;
+			}
+
+			if (phone == "" || isNaN(parseInt(phone))) {
+				alert("Please enter a valid phone number");
+				return false;
+			}
+
+			if (address == "") {
+				alert("Address must be filled out");
+				return false;
+			}
+
+			if (email == "" || !email.includes("@")) {
+				alert("Please enter a valid email address");
+				return false;
+			}
+
+			return true;
+		}
+	</script>
+</head>
+<body align="centre">
+<h1>Enter your basic details</h1>
+	<form name="myform" method="post" action="abc.jsp" onsubmit="return validateform()">  
+		<label for="full-name">Full Name:</label>         
+		<input type="text" id="full-name" name="full-name" size="15"/> 
+		
+		<br><br><label for="branch">Branch:</label>   
+		<select id="branch" name="branch">  
+			<option value="Course">↓</option>  
+			<option value="CSE">CSE</option>  
+			<option value="AIML">AIML</option>  
+			<option value="AIDS">AIDS</option>  
+			<option value="MECH">MECH</option>  
+			<option value="CIVIL">CIVIL</option>  
+		</select>  
+		
+		<br><br><label>Gender:</label><br>  
+		<input type="radio" id="male" name="gender" value="male"/> 
+		<label for="male">Male</label><br>  
+		<input type="radio" id="female" name="gender" value="female"/> 
+		<label for="female">Female</label><br>  
+		<input type="radio" id="other" name="gender" value="other"/> 
+		<label for="other">Other</label><br>  
+		
+		<br><br><label for="phone">Phone:</label>  
+		<input type="text" id="country-code" name="country-code" value="+91" size="2"/>   
+		<input type="text" id="phone" name="phone" size="10"/> 
+		<br><br><label for="address">Address:</label>  
+		<textarea id="address" name="address" cols="50" rows="5"></textarea>  
+		<br><br><label for="email">Email:</label>  
+		<input type="email" id="email" name="email"/> 
+		<br><br><input type="submit" value="Submit"/> 
+	</form>   
+</body>
+</html>
