@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Booking Confirmation</h1>
+        <div id="confirmationDetails">
+            <!-- JavaScript will fill in the details dynamically -->
+        </div>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Retrieve form data from sessionStorage (set in booking.html)
+                const formData = JSON.parse(sessionStorage.getItem('formData'));
+
+                if (formData) {
+                    const { name, email, date, time, guests } = formData;
+
+                    // Display confirmation details
+                    const confirmationDetails = document.getElementById('confirmationDetails');
+                    confirmationDetails.innerHTML = `
+                        <p><strong>Name:</strong> ${name}</p>
+                        <p><strong>Email:</strong> ${email}</p>
+                        <p><strong>Date:</strong> ${date}</p>
+                        <p><strong>Time:</strong> ${time}</p>
+                        <p><strong>Number of Guests:</strong> ${guests}</p>
+                    `;
+                } else {
+                    // Handle case where formData is not available (optional)
+                    const confirmationDetails = document.getElementById('confirmationDetails');
+                    confirmationDetails.innerHTML = `<p>Booking details not found.</p>`;
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>
